@@ -12,13 +12,14 @@ about:
     - icon: github
       text: Github
       href: https://github.com/brickbrycebrick
-
+navbar:
+  logo: favicon.png
 ---
 
 Hi, I'm **Bryce Klein** - a data analyst in Fintech based in Boston, Massachusetts. I also TA for Shaw Talebi's [AI course on Maven](https://maven.com/shaw-talebi/ai-builders-bootcamp).
 
 This blog is an attempt to organize my thoughts (mostly around analytics, AI and programming) into something coherent and useful. 
 
-### Why "Street Fighting Analytics"?
+### Why "Street-Fighting Analytics"?
 
 As a physics undergrad I was heavily inspired by Sanjoy Mahajan's [Street Fighting Mathematics](http://streetfightingmath.com/). It's a book about using math to make quick and reasonably intelligent decisions (something I try to do here). If you like math you should check it out.
