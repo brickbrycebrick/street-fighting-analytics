@@ -4,6 +4,10 @@ project:
 website:
   title: "Street-Fighting Analytics"
   favicon: favicon.png
+  search:
+    keyboard-shortcut: ["f", "/"]
+    show-item-context: true
+    copy-button: true
   navbar:
     right:
       - text: "About"
@@ -14,7 +18,12 @@ website:
         href: https://www.linkedin.com/in/bryceklein3/
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: default
     css: styles.css
+    highlight-style: github-dark
+    toc: true
+    toc-title: Contents
+    toc-location: right
+    toc-depth: 2
+    callout-appearance: simple
+    link-external-newwindow: true

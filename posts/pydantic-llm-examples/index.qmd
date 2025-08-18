@@ -1,17 +1,17 @@
 ---
-toc: false
 title: "PydanticAI Fundamentals: From Web Scraping to PDF Parsing"
-date: "04/15/2025"
-description: "A beginner-friendly introduction with python code"
-categories: ['Python Libraries']
+description: "A beginner-friendly introduction to structured data validation with LLMs"
+date: "2025-04-15"
+categories: [Python, AI, Pydantic, Document Parsing, Web Scraping]
 image: abstract_1.jpg
+draft: false
 ---
 
 ## Introduction: The Data Chaos of LLMs
 
-Large Language Models (LLMs) revolutionize how we interact with unstructured data-but there's a catch. While they excel at generating human-like text, integrating their outputs into structured, reliable workflows often feels like herding cats.
+Tired of appending `please output JSON` to every LLM prompt like a digital prayer? While large Language Models (LLMs) revolutionize how we interact with unstructured data, integrating their outputs into traditional software workflows can be highly unpredictable and unscalable. 
 
-Enter PydanticAI, the Python library that's quietly become the backbone of modern AI development.
+Enter Pydantic, the Python library that's quietly become the backbone of modern AI development.
 
 In this guide, we'll build two real-world tools that show why PydanticAI is a non-negotiable for LLM projects:
 
@@ -36,7 +36,7 @@ Let's see it in action.
 
 ---
 
-## Example 1: Web Scraping an E-Commerce Site
+## Example 1: Web Scraping an E-Commerce Site {#sec-web-scraping}
 
 ### The Problem:
 
@@ -49,15 +49,15 @@ You scrape a product page, but the raw HTML is a jungle of nested divs and incon
 ```python
 from pydantic import BaseModel, Field
 
-# Define Pydantic schema for data extraction
 class Product(BaseModel):
+    """Schema for e-commerce product data extraction."""
     name: str = Field(..., description="Product name from the webpage")
     price: str = Field(..., description="Current price including currency")
     rating: float = Field(None, description="User rating between 1-5 stars")
     features: list[str] = Field(..., description="Key product features")
 ```
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Why this matters
 This model acts as a "data contract" - it explicitly defines what you expect from the LLM. Even optional fields like rating are declared upfront.
 :::
@@ -82,8 +82,8 @@ llm_strategy = LLMExtractionStrategy(
 )
 ```
 
-::: {.callout-important}
-## Key insight
+::: {.callout-note}
+## Key Insight
 By passing `Product.schema()` to crawl4ai, we're "locking in" the LLM's output format to match our Pydantic model. No more guessing games.
 :::
 
@@ -92,21 +92,20 @@ By passing `Product.schema()` to crawl4ai, we're "locking in" the LLM's output f
 ```python
 import asyncio
 
-# Set up crawler configuration with BrowserConfig
-browser_config = BrowserConfig(
-    headless=True,
-    verbose=True,
-    extra_args=["--disable-gpu", "--no-sandbox"]
-)
-
-# Set up crawler configuration with CrawlerRunConfig
-crawl_config = CrawlerRunConfig(
-    extraction_strategy=llm_strategy,
-    cache_mode=CacheMode.BYPASS,
-    word_count_threshold=100
-)
-
 async def main():
+    # Set up crawler configuration
+    browser_config = BrowserConfig(
+        headless=True,
+        verbose=True,
+        extra_args=["--disable-gpu", "--no-sandbox"]
+    )
+
+    crawl_config = CrawlerRunConfig(
+        extraction_strategy=llm_strategy,
+        cache_mode=CacheMode.BYPASS,
+        word_count_threshold=100
+    )
+
     async with AsyncWebCrawler(config=browser_config) as crawler:
         result = await crawler.arun(
             url="https://www.amazon.com/alm/storefront/?almBrandId=VUZHIFdob2xlIEZvb2Rz",
@@ -130,13 +129,13 @@ if __name__ == "__main__":
 
 **Output:**
 
-```json
-{  
-  "name": "Annie's Frozen Pizza Poppers",  
-  "price": "$4.59",  
-  "rating": null,  
-  "features": ["Three Cheese", "Snacks", "6.8 oz", "15 ct"]  
-}  
+```{.json}
+{
+  "name": "Annie's Frozen Pizza Poppers",
+  "price": "$4.59",
+  "rating": null,
+  "features": ["Three Cheese", "Snacks", "6.8 oz", "15 ct"]
+}
 ```
 
 ### Why This Approach Wins
@@ -168,11 +167,11 @@ Web scraping is just the start. Let's tackle a harder problem: extracting domain
 
 ---
 
-## Example 2: Parsing Technical PDFs
+## Example 2: Parsing Technical PDFs {#sec-pdf-parsing}
 
 ### The Problem:
 
-You're handed a 31-page PDF datasheet for the LM317 voltage regulator. Traditional PDF parsers choke on the mix of tables, diagrams, and technical jargon. Even LLMs struggle - they might extract current ratings as strings ("1.5A") instead of numbers, or miss nested specifications entirely.
+You're handed a 31-page [PDF datasheet for the LM317 voltage regulator](https://www.ti.com/lit/ds/symlink/lm317.pdf?ts=1755472651219&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLM317). Traditional PDF parsers choke on the mix of tables, diagrams, and technical jargon. Even LLMs struggle - they might extract current ratings as strings ("1.5A") instead of numbers, or miss nested specifications entirely.
 
 ### The PydanticAI Power Play:
 
@@ -183,15 +182,18 @@ from pydantic import BaseModel, Field
 from typing import List
 
 class VoltageRange(BaseModel):
+    """Voltage specification with min/max range."""
     min_voltage: float = Field(..., description="Minimum voltage in volts")
     max_voltage: float = Field(..., description="Maximum voltage in volts")
     unit: str = Field("V", description="Voltage unit")
 
 class PinConfiguration(BaseModel):
+    """Pin layout specification."""
     pin_count: int = Field(..., description="Number of pins")
     layout: str = Field(..., description="Detailed pin layout description")
 
 class LM317Spec(BaseModel):
+    """Complete specification for LM317 voltage regulator."""
     component_name: str = Field(..., description="Name of the component")
     output_voltage: VoltageRange  # ← Nested model!
     dropout_voltage: float = Field(..., description="Dropout voltage in volts")
@@ -199,7 +201,7 @@ class LM317Spec(BaseModel):
     pin_configuration: PinConfiguration  # ← Another nested model
 ```
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Why this matters
 These models act like technical blueprints. The nested `VoltageRange` ensures even complex specs stay structured.
 :::
@@ -211,11 +213,14 @@ from llama_cloud_services import LlamaExtract
 from llama_cloud import ExtractConfig
 from dotenv import load_dotenv
 
-# Load .env variables (ensure LLAMA_CLOUD_API_KEY is set in your .env file)
+# Load environment variables
 load_dotenv(override=True)
 
 # Initialize with your API credentials
-llama_extract = LlamaExtract(project_id="your-project-id", organization_id="your-org-id")
+llama_extract = LlamaExtract(
+    project_id="your-project-id", 
+    organization_id="your-org-id"
+)
 
 # Create AI agent with our schema
 agent = llama_extract.create_agent(
@@ -281,25 +286,41 @@ PydanticAI transforms LLMs from text generators into structured data engineers. 
 
 ---
 
-## Conclusion: From Prototype to Production in Record Time
+## Summary {#sec-summary}
 
-PydanticAI solves the hidden cost of LLM projects: the maintenance tax.
+This guide demonstrated PydanticAI's power through two practical examples:
 
-- **Before**: 70% of development time spent cleaning data, writing validators, debugging edge cases.
-- **After**: Models are the validation.
+1. **Web Scraping** (@sec-web-scraping): Extracting structured product data from messy HTML
+2. **PDF Parsing** (@sec-pdf-parsing): Converting technical documents into validated schemas
 
-The two examples we covered demonstrate:
+## Key Benefits
 
-- **Web Scraping**: Structured e-commerce data in 50 lines of code
-- **PDF Parsing**: Domain-specific schematics extraction without regex hell
+- **Type Safety**: Catch data inconsistencies before they break your pipeline
+- **Self-Documentation**: Schemas serve as living documentation
+- **Tool Agnostic**: Switch LLM providers without rewriting validation logic
 
-This pattern applies to any unstructured data source:
+## Next Steps
 
-- Emails → CRM entries
-- Meeting transcripts → Action items
-- Research papers → Citation graphs
+Try applying these patterns to your own data sources:
 
-::: {.callout-important}
+- **Emails** → CRM entries
+- **Meeting transcripts** → Action items  
+- **Research papers** → Citation graphs
+
+## Conclusion {#sec-conclusion}
+
+PydanticAI transforms the biggest challenge in LLM projects—unreliable outputs—into a solved problem. By defining schemas upfront, you get production-ready data validation from day one.
+
+::: {.callout-note}
 ## The Ultimate Benefit
-When your schemas outlive your tools. Switch LLM providers? Redesign your UI? Your validated data pipeline remains untouched.
+Your schemas outlive your tools. Switch LLM providers? Redesign your UI? Your validated data pipeline remains untouched.
 :::
+
+::: {.callout-tip}
+## Dive Deeper into Pydantic
+This blog is just the tip of the iceberg. [Pydantic Documentation](https://docs.pydantic.dev/latest/) is a great place to start learning more about all Pydantic has to offer. I also highly recommend checking out [PydanticAI](https://ai.pydantic.dev/), another excellent framework for building LLM-powered applications.
+:::
+
+---
+
+
