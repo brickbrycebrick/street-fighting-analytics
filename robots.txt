@@ -1,1 +1,1 @@
-Sitemap: https://brickbrycebrick.github.io/street-fighting-analytics/sitemap.xml
+Sitemap: https://www.streetfightinganalytics.com/sitemap.xml
