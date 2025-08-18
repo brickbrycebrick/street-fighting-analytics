@@ -318,7 +318,7 @@ Your schemas outlive your tools. Switch LLM providers? Redesign your UI? Your va
 
 ::: {.callout-tip}
 ## Dive Deeper into Pydantic
-This blog is just the tip of the iceberg. [Pydantic Documentation](https://docs.pydantic.dev/latest/) is a great place to start learning more about all Pydantic has to offer. I also highly recommend checking out [PydanticAI](https://ai.pydantic.dev/), another excellent framework for building LLM-powered applications.
+This post is just the tip of the iceberg. The [Pydantic Documentation](https://docs.pydantic.dev/latest/) and [Real Python's Pydantic Guide](https://realpython.com/quizzes/python-pydantic/) are a great place to start learning more about all Pydantic has to offer. I also highly recommend checking out [PydanticAI](https://ai.pydantic.dev/), another excellent framework for building LLM-powered applications.
 :::
 
 ---
