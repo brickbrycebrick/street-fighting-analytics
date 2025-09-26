@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/mirascope-batch-processing/index.html",
       "/posts/pydantic-llm-examples/index.html"
     ]
   }
