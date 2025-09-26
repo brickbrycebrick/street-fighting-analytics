@@ -1,5 +1,5 @@
 ---
-title: "Blazingly Fast LLM Calls for Data Science: How to make 1,000 LLM calls in 10 seconds"
+title: "Blazingly Fast LLM Calls for Data Science: How to make 1,000 LLM calls in 16 seconds"
 description: "How Data Scientists can rapidly process unstructured text with LLMs as if it were just another pandas operation"
 date: "2025-09-25"
 categories: [Python, AI, Pydantic, Pandas, Data Engineering, Mirascope]
@@ -7,7 +7,7 @@ image: "benchmark_results.png"
 draft: false
 ---
 
-## From 50 Crashed Records to 1,000 LLM Calls in 10 Seconds
+## From 50 Crashed Records to 1,000 LLM Calls in 16 Seconds
 
 *"Can you run sentiment analysis on this customer feedback dataset?"*  
 *"Can you reformat all of these survey responses into a consistent format?"*  
@@ -21,7 +21,7 @@ After some debugging, you discover batch APIs exist, but they require uploading 
 
 ::: {.callout-important}
 ## The Promise
-**What if I told you there's a way to process 1,000 LLM calls in under 10 seconds, get perfectly structured data back, and never worry about rate limits again?**
+**What if I told you there's a way to process 1,000 LLM calls in under 16 seconds, get perfectly structured data back, and never worry about rate limits again?**
 :::
 
 In this guide, we'll walk through a toolkit that transforms LLM processing from a brittle, slow nightmare into something as reliable as a pandas operation. You'll learn to process thousands of prompts asynchronously while respecting rate limits and, most importantly, getting clean, validated data back.
