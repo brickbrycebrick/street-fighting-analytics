@@ -926,7 +926,7 @@ blockquote {
 a:focus-visible,
 button:focus-visible,
 .btn:focus-visible {
-  outline: 2px solid var(--accent-primary);
+  outline: 2px solid var(--accent-primary) !important;
   outline-offset: 2px;
 }
 
