@@ -17,6 +17,8 @@ Your manager drops a CSV with 5,000 rows on your desk. Easy, you think - you've 
 
 After some debugging, you discover batch APIs exist, but they require uploading files and waiting 2+ hours for results. You need to iterate **fast**, not wait until tomorrow.
 
+![](benchmark_results.png)
+
 ::: {.callout-important}
 ## The Promise
 **What if I told you there's a way to process 1,000 LLM calls in under 10 seconds, get perfectly structured data back, and never worry about rate limits again?**
