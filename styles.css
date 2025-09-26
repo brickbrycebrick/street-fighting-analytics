@@ -185,10 +185,21 @@ a:hover {
 
 .content,
 main {
-  max-width: 900px;
+  max-width: 700px; /* Reduced from 900px to leave space for TOC */
   margin: 0 auto;
 }
 
+/* Ensure proper spacing when TOC is present */
+body.quarto-sidebar-toc .content,
+body.quarto-sidebar-toc main {
+  max-width: 650px; /* Even more conservative when TOC is present */
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* =================================================================
+   Quarto-Specific Selectors
+   ================================================================= */
 /* Force dark background on all main containers */
 .quarto-container,
 .content,
@@ -1445,11 +1456,24 @@ a.quarto-xref:hover {
   .quarto-listing .list-item {
     animation: fadeIn 0.3s ease-out;
   }
+  
+  /* Reset content width on mobile - TOC moves to top */
+  .content,
+  main {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  
+  body.quarto-sidebar-toc .content,
+  body.quarto-sidebar-toc main {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
 }
 
 /* =================================================================
    NUCLEAR SEARCH OVERRIDE - Highest Priority
-   ================================================================= */
+{{ ... }}
 /* This section uses maximum CSS specificity to override Quarto defaults */
 html body div[id*="search"] .aa-DetachedOverlay,
 html body div[class*="search"] .aa-DetachedOverlay,
