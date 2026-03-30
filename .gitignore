@@ -1,0 +1,6 @@
+/.quarto/
+_site/
+ideas.md
+.*
+!.github/
+!.gitignore
