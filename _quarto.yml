@@ -18,14 +18,25 @@ website:
         href: https://github.com/brickbrycebrick
       - icon: linkedin
         href: https://www.linkedin.com/in/bryceklein3/
+  page-footer:
+    center: "&copy; 2025 Bryce Klein"
+
 format:
   html:
-    theme: default
-    css: styles.css
+    theme: theme.scss
     highlight-style: github-dark
     toc: true
     toc-title: Contents
     toc-location: right
-    toc-depth: 2
+    toc-depth: 3
     callout-appearance: simple
     link-external-newwindow: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: Inter, system-ui, sans-serif
+    monofont: JetBrains Mono, monospace
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">

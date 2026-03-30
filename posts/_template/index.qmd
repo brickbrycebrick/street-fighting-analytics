@@ -1,0 +1,56 @@
+---
+title: "YOUR TITLE HERE"
+description: "One-line description for the listing page and social sharing"
+date: "YYYY-MM-DD"
+categories: [Python, AI]
+image: thumbnail.png
+draft: true
+---
+
+## The Problem
+
+What question are you answering? What pain point does this solve?
+Set up the "why should I care" in 2-3 sentences.
+
+## The Approach
+
+Brief overview of your method — what tools, what data, what strategy.
+
+```{python}
+#| label: setup
+#| code-fold: true
+#| code-summary: "Setup & imports"
+
+import pandas as pd
+```
+
+## Results
+
+Show the interesting output first, then explain.
+
+```{python}
+#| label: analysis
+
+# Your core analysis here
+```
+
+::: {.callout-note}
+## Key Takeaway
+One sentence summarizing the most important finding.
+:::
+
+## How It Works
+
+Walk through the code/logic step by step.
+
+```{python}
+#| label: step-1
+
+# Break the work into digestible chunks
+```
+
+## Conclusion
+
+- What did you learn?
+- What would you do differently?
+- What's next?

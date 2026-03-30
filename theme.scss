@@ -1,0 +1,468 @@
+/*-- scss:defaults --*/
+
+// Colors
+$body-bg: #0d1117;
+$body-color: #c9d1d9;
+$link-color: #ff6b35;
+$link-hover-color: #ff8c5a;
+
+// Surface colors
+$card-bg: #161b22;
+$card-border-color: rgba(255, 255, 255, 0.06);
+$input-bg: #161b22;
+$input-border-color: rgba(255, 255, 255, 0.1);
+
+// Navbar
+$navbar-bg: #0d1117;
+$navbar-fg: #e6edf3;
+$navbar-dark-color: rgba(255, 255, 255, 0.7);
+$navbar-dark-hover-color: #ff6b35;
+
+// Typography
+$font-family-sans-serif: "Inter", system-ui, -apple-system, sans-serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", monospace;
+$font-size-base: 1.05rem;
+$line-height-base: 1.8;
+$headings-font-weight: 700;
+$headings-color: #e6edf3;
+
+// Code
+$code-color: #ff8c5a;
+$pre-color: #c9d1d9;
+$code-block-bg: #161b22;
+
+// Borders
+$border-color: rgba(255, 255, 255, 0.06);
+$hr-border-color: rgba(255, 255, 255, 0.06);
+
+// Table
+$table-color: #c9d1d9;
+$table-bg: transparent;
+$table-border-color: rgba(255, 255, 255, 0.06);
+$table-striped-bg: rgba(255, 255, 255, 0.02);
+$table-hover-bg: rgba(255, 255, 255, 0.04);
+
+/*-- scss:rules --*/
+
+// --- Hero section on landing page ---
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-bottom: 1rem;
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #e6edf3 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+}
+
+// --- Navbar ---
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navbar-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+// --- Content width ---
+.content {
+  max-width: 780px;
+}
+
+// --- Blog listing (default style) ---
+.quarto-listing {
+  margin-top: 0;
+}
+
+#quarto-document-content {
+  padding-top: 0;
+}
+
+.quarto-listing .list-group-item {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 0;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.quarto-listing .listing-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e6edf3;
+
+  &:hover {
+    color: #ff6b35;
+  }
+}
+
+.quarto-listing .listing-description {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.quarto-listing .listing-date {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.quarto-listing .listing-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+// --- Cards (for grid listing if used) ---
+.card {
+  background-color: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.card-title a {
+  color: #e6edf3;
+  text-decoration: none;
+
+  &:hover {
+    color: #ff6b35;
+  }
+}
+
+// --- Headings inside posts ---
+.quarto-title h1.title,
+h1.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #e6edf3;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+// --- Code blocks (input) ---
+pre.sourceCode {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 1.2em;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+div.sourceCode {
+  border-radius: 8px;
+  background-color: #161b22;
+}
+
+// Code output — slightly different bg so readers can tell input from output
+.cell-output pre {
+  background-color: #10161e;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 3px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1.2em;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #8b949e;
+}
+
+// Inline code — higher contrast pill
+p code, li code, td code {
+  background-color: rgba(255, 107, 53, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.15);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  font-size: 0.86em;
+  color: #ffb088;
+}
+
+// --- TOC ---
+nav#TOC {
+  font-size: 0.85rem;
+
+  a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover, &.active {
+      color: #ff6b35;
+    }
+  }
+}
+
+// --- Blockquotes ---
+blockquote {
+  border-left: 3px solid #ff6b35;
+  padding-left: 1.2em;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+// --- Callouts ---
+.callout {
+  border-left-width: 3px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.02);
+  padding: 1em 1.25em;
+  margin: 1.5em 0;
+
+  .callout-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .callout-body p {
+    margin-bottom: 0.5em;
+  }
+}
+
+// --- Tables (data-science-friendly) ---
+.table {
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead th {
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 0.75rem;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(255, 107, 53, 0.04);
+  }
+
+  // Bold values in first column (common for method/metric names)
+  tbody td:first-child {
+    font-weight: 500;
+    color: #e6edf3;
+  }
+}
+
+// --- Figure captions ---
+.quarto-figure figcaption,
+.figure-caption {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.6rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+// --- Images ---
+.quarto-figure img {
+  border-radius: 8px;
+}
+
+// --- DataFrame / pandas output ---
+.dataframe, .cell-output table {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+  overflow-x: auto;
+
+  th {
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 0.6rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-family: $font-family-monospace;
+    font-size: 0.82rem;
+  }
+}
+
+// --- Math / LaTeX ---
+.math, mjx-container {
+  font-size: 1.05em;
+  margin: 1.2em 0;
+  overflow-x: auto;
+}
+
+// Display-mode equations
+.math.display, mjx-container[display="true"] {
+  padding: 1rem 0;
+  margin: 1.5rem 0;
+}
+
+// --- Numbered lists with content (common in tutorials) ---
+ol {
+  li {
+    margin-bottom: 0.6em;
+    padding-left: 0.2em;
+  }
+}
+
+// --- Definition lists (great for parameter docs) ---
+dl {
+  dt {
+    font-weight: 600;
+    color: #e6edf3;
+    margin-top: 1em;
+    font-family: $font-family-monospace;
+    font-size: 0.92rem;
+  }
+
+  dd {
+    color: rgba(255, 255, 255, 0.65);
+    margin-left: 1.2em;
+    margin-bottom: 0.5em;
+  }
+}
+
+// --- Categories/tags ---
+.quarto-category {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// --- Title banner ---
+.quarto-title-banner {
+  background-color: #161b22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+// --- Footer ---
+.nav-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+// --- About page ---
+.about-entity .about-link {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    border-color: #ff6b35;
+    color: #ff6b35;
+  }
+}
+
+// --- Selection highlight ---
+::selection {
+  background-color: rgba(255, 107, 53, 0.3);
+  color: #e6edf3;
+}
+
+// --- Scrollbar (webkit) ---
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+// --- Sidebar categories ---
+.sidebar {
+  background-color: #0d1117;
+}
+
+// --- Search ---
+.search-input {
+  background-color: #161b22;
+  color: #e6edf3;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+// --- Responsive ---
+@media (max-width: 768px) {
+  body { font-size: 1rem; }
+
+  .hero-section {
+    padding: 2rem 1rem 1.5rem;
+
+    h1 { font-size: 2rem; }
+    p { font-size: 1rem; }
+  }
+}
+
+// --- Accessibility ---
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

@@ -2,10 +2,20 @@
 listing:
   contents: posts
   sort: "date desc"
-  type: grid
+  type: default
   categories: true
   sort-ui: false
   filter-ui: false
+  fields: [image, date, title, description, categories]
 page-layout: full
-
+title-block-banner: false
 ---
+
+::: {.hero-section}
+
+# Street-Fighting Analytics
+
+Quick, clever approaches to analytics, AI, and programming.
+
+:::
+
